@@ -4,6 +4,9 @@ jdk: openjdk11
 
 sudo: true
 
+services:
+  - docker
+
 before_install:
   - chmod +x mvnw
   
@@ -18,3 +21,10 @@ branches:
     - release
   except:
     - feature
+
+deploy:
+  provider: script
+  script: bash docker_build
+  on:
+    branch: main
+
