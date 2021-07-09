@@ -9,8 +9,6 @@ services:
 
 before_install:
   - chmod +x mvnw
-  
-script: mvn clean verify
 
 branches:
   only:
@@ -22,9 +20,10 @@ branches:
   except:
     - feature
 
-deploy:
-  provider: script
-  script: bash docker_build
-  on:
-    branch: main
+stages:
+    - name: build
+      script: mvn clean install
+
+after_success: bash docker_build
+
 

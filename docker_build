@@ -1,6 +1,7 @@
 #!/bin/bash
 
-docker build -t demoapp .
-
+echo "---------- build image and deploy ----------"
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
-docker push $DOCKER_REPO/demoapp
+docker build -t demoapp .
+docker tag demoapp $DOCKER_USERNAME/demoapp
+docker push $DOCKER_USERNAME/demoapp
