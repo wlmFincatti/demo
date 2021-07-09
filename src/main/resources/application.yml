@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: poc-demo
+  banner:
+    location: classpath:custom-banner.txt
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+springdoc:
+  show-actuator: true
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    url: /v3/api-docs
+    path: /swagger-ui.html
