@@ -1,6 +1,9 @@
 language: java
+
 jdk: openjdk11
+
 script: mvn clean verify
+
 branches:
   only:
     - main
