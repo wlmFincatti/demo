@@ -3,6 +3,7 @@ jdk: openjdk11
 script: mvn clean verify
 branches:
   only:
+    - main
     - master
     - stable
     - develop
