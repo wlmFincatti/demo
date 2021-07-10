@@ -33,6 +33,7 @@ after_success: bash dockerbuild
 deploy:
   provider: script
   script: bash aksdeploy
-
+  on:
+    branch: main
 
 

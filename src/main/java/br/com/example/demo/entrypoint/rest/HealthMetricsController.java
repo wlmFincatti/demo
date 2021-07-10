@@ -30,7 +30,7 @@ public class HealthMetricsController {
     @GetMapping
     public Health getHealthCustom() {
         Runtime runtime = Runtime.getRuntime();
-        HashMap<String, MetricsCustom> metrics = new HashMap<>();
+        Map<String, MetricsCustom> metrics = new HashMap<>();
 
         metrics.put("metrics", MetricsCustom.builder()
             .avaibleCpus(runtime.availableProcessors())
