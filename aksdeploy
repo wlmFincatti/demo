@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "---------- aks deploy ----------"
+
+az login -u "$AZURE_USERNAME" -p "$AZURE_PASSWORD"
+
+az account set --subscription $AZURE_AKS_SUBSCRIPTION
+
+az aks get-credentials --resource-group $AZURE_AKS_RESOURCE_GROUP --name $AZURE_AKS_CLUSTER

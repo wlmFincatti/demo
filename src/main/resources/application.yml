@@ -1,5 +1,8 @@
+server:
+  port: 8080
+api:
+  version: @project.version@
 spring:
-
   application:
     name: poc-demo
   banner:
@@ -16,3 +19,10 @@ springdoc:
   swagger-ui:
     url: /v3/api-docs
     path: /swagger-ui.html
+
+openapi:
+  info:
+    version: @project.version@
+    description: API rest demo with spring
+    title: API DEMO
+    email: williamfincatti.dasila@gmail.com
