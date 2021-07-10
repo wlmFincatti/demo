@@ -37,8 +37,6 @@ kind: Service
 metadata:
   namespace: demos
   name: demo-app-svc
-  annotations:
-    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
   type: LoadBalancer
   selector:
