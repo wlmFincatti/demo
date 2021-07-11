@@ -4,6 +4,7 @@ import br.com.example.demo.domain.product.Product;
 import br.com.example.demo.entrypoint.rest.dto.ProductDTO;
 import br.com.example.demo.usecase.port.ProductGateway;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -13,6 +14,7 @@ public class UpdateProductUsecase {
     private final ProductGateway gateway;
     private final FindProductByIdUsecase findProductByIdUsecase;
 
+    @CacheEvict(cacheNames = "Product", allEntries = true)
     public Product execute(String id, ProductDTO productDto) {
 
         Product productFound = findProductByIdUsecase.execute(id);

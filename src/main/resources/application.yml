@@ -7,6 +7,11 @@ spring:
     name: poc-demo
   banner:
     location: classpath:custom-banner.txt
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
 management:
   endpoints:
     web:

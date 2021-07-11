@@ -4,6 +4,7 @@ import br.com.example.demo.domain.product.Product;
 import br.com.example.demo.domain.product.exception.ProductNameExistsException;
 import br.com.example.demo.usecase.port.ProductGateway;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
@@ -12,6 +13,7 @@ public class CreateProductUsecase {
 
     private final ProductGateway gateway;
 
+    @CacheEvict(cacheNames = "Product", allEntries = true)
     public Product execute(Product product) {
 
         gateway.findProductByName(product.getName())

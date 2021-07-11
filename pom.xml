@@ -22,11 +22,23 @@
         <maven-surefire-plugin.version>2.20</maven-surefire-plugin.version>
         <maven-compiler-plugin.version>3.6.1</maven-compiler-plugin.version>
         <rest-assured.version>4.2.0</rest-assured.version>
+        <spring-boot-starter-cache.version>2.4.3</spring-boot-starter-cache.version>
+        <spring-boot-starter-data-redis.version>2.4.3</spring-boot-starter-data-redis.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+            <version>${spring-boot-starter-cache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring-boot-starter-data-redis.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
