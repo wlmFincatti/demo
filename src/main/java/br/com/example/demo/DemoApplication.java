@@ -1,13 +1,40 @@
 package br.com.example.demo;
 
+import br.com.example.demo.domain.product.Product;
+import br.com.example.demo.external.repository.ProductRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
+import java.util.stream.IntStream;
+
+@Slf4j
 @SpringBootApplication
 public class DemoApplication {
 
+    @Autowired
+    private ProductRepository repository;
+
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
+    }
+
+    @PostConstruct
+    public void initCollection() {
+        IntStream.range(0, 200)
+            .forEach(idx -> {
+                Product ps5 = Product
+                    .builder()
+                    .name(String.format("item_%d", idx))
+                    .price(new BigDecimal(RandomUtils.nextFloat()))
+                    .build();
+
+                Product productSaved = repository.save(ps5);
+            });
     }
 
 }

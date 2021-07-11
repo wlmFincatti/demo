@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  demo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: demo-app
+    ports:
+      - 8080:8080
+    networks:
+      - demo_net
+networks:
+  demo_net:
+    driver: bridge
