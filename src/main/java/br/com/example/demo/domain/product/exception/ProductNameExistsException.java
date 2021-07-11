@@ -6,7 +6,7 @@ public class ProductNameExistsException extends RuntimeException {
     }
 
     public ProductNameExistsException(String message) {
-        super(String.format("product with name &s exists", message));
+        super(String.format("product with name %s exists", message));
     }
 
     public ProductNameExistsException(String message, Throwable cause) {

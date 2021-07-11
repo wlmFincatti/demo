@@ -7,7 +7,6 @@ import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.servers.Server;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +24,11 @@ public class OpenApiInfo {
     private String title;
     private String description;
     private String email;
-    @Autowired
     private ServerProperties serverProperties;
+
+    public OpenApiInfo(ServerProperties serverProperties) {
+        this.serverProperties = serverProperties;
+    }
 
     @Bean
     public OpenAPI customOpenAPI() {

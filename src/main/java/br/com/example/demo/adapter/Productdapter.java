@@ -36,7 +36,7 @@ public class Productdapter {
             .map(Productdapter::convertToResponse)
             .collect(Collectors.toList());
 
-        return new PageImpl<ProductDTO>(
+        return new PageImpl<>(
             productsDto,
             productsPage.getPageable(),
             productsPage.getTotalElements());

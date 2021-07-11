@@ -30,10 +30,10 @@ public class DemoApplication {
                 Product ps5 = Product
                     .builder()
                     .name(String.format("item_%d", idx))
-                    .price(new BigDecimal(RandomUtils.nextFloat()))
+                    .price(BigDecimal.valueOf(RandomUtils.nextFloat()))
                     .build();
 
-                Product productSaved = repository.save(ps5);
+                repository.save(ps5);
             });
     }
 

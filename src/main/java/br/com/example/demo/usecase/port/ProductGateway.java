@@ -4,6 +4,7 @@ import br.com.example.demo.domain.product.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ProductGateway {
@@ -20,4 +21,5 @@ public interface ProductGateway {
 
     Page<Product> findAllProduct(Integer page, Integer pageSize, Sort fieldSort);
 
+    List<Product> findProduct(Product product);
 }
