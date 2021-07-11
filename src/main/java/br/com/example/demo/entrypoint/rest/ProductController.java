@@ -155,7 +155,7 @@ public class ProductController {
     public ResponseEntity<ProductDTO> updateProduct(@PathVariable String id,
                                                     @Valid @RequestBody ProductDTO productDTO) {
         return ResponseEntity
-            .ok(Productdapter.convertToResponse(updateProductUsecase.execute(id, productDTO)));
+            .ok(Productdapter.convertToResponse(updateProductUsecase.execute(id, Productdapter.convertToDomain(productDTO))));
     }
 
 }

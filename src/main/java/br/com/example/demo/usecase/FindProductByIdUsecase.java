@@ -5,6 +5,7 @@ import br.com.example.demo.domain.product.exception.ProductNotFounException;
 import br.com.example.demo.usecase.port.ProductGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.stereotype.Service;
 
 @Slf4j
@@ -14,6 +15,7 @@ public class FindProductByIdUsecase {
 
     private final ProductGateway gateway;
 
+    @CachePut(value = "product", key = "#id")
     public Product execute(String id) {
         return gateway.findProductById(id)
             .orElseThrow(() -> {

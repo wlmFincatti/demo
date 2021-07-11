@@ -1,14 +1,19 @@
 version: "3.7"
 services:
-  #  demo-app:
-  #    build:
-  #      context: .
-  #      dockerfile: Dockerfile
-  #    container_name: demo-app
-  #    ports:
-  #      - 8080:8080
-  #    networks:
-  #      - back-network
+  demo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: demo-app
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    ports:
+      - 8080:8080
+    networks:
+      - back-network
+    depends_on:
+      - mongo
+      - redis-cache
 
   mongo:
     image: mongo
@@ -26,9 +31,30 @@ services:
       - back-network
 
   redis-cache:
+    container_name: redis
     image: redis:6.2
     ports:
       - 6379:6379
+    networks:
+      - back-network
+
+  grafana:
+    ports:
+      - "3000:3000"
+    volumes:
+      - /var/lib/grafana
+    links:
+      - prometheus
+    image: grafana/grafana
+    networks:
+      - back-network
+
+  prometheus:
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    image: prom/prometheus
     networks:
       - back-network
 
