@@ -1,14 +1,40 @@
 version: "3.7"
 services:
-  demo-app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: demo-app
+  #  demo-app:
+  #    build:
+  #      context: .
+  #      dockerfile: Dockerfile
+  #    container_name: demo-app
+  #    ports:
+  #      - 8080:8080
+  #    networks:
+  #      - back-network
+
+  mongo:
+    image: mongo
+    container_name: mongo-db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: demo-app-db
     ports:
-      - 8080:8080
+      - 27017:27017
+    volumes:
+      - mongo-vlm:/data/db
     networks:
-      - demo_net
+      - back-network
+
+  redis-cache:
+    image: redis:6.2
+    ports:
+      - 6379:6379
+    networks:
+      - back-network
+
+volumes:
+  mongo-vlm:
+
 networks:
-  demo_net:
+  back-network:
     driver: bridge

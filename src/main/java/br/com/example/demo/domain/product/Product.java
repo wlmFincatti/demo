@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @EqualsAndHashCode
@@ -12,8 +13,10 @@ import java.math.BigDecimal;
 @Builder
 @Data
 @Document(collection = "products")
-public class Product {
+public class Product implements Serializable {
 
+    private static final long serialVersionUID = 2038666175199554949L;
+    
     @Id
     private String id;
     private String name;

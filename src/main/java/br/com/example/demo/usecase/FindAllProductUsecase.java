@@ -17,7 +17,7 @@ public class FindAllProductUsecase {
 
     private final ProductGateway gateway;
 
-    @Cacheable(cacheNames = "Product", key="#root.method.class+#root.method.name")
+    @Cacheable(cacheNames = "product", key = "#root.methodName")
     public Page<Product> execute(Integer page, Integer pageSize, Sort fieldSort) {
         return gateway.findAllProduct(page, pageSize, fieldSort);
     }
