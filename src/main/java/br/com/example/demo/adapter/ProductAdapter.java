@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class Productdapter {
+public class ProductAdapter {
 
     public static ProductDTO convertToResponse(Product product) {
         return ProductDTO
@@ -33,7 +33,7 @@ public class Productdapter {
 
         List<ProductDTO> productsDto = productsPage
             .get()
-            .map(Productdapter::convertToResponse)
+            .map(ProductAdapter::convertToResponse)
             .collect(Collectors.toList());
 
         return new PageImpl<>(

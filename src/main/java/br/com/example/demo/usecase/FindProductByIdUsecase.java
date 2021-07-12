@@ -1,7 +1,7 @@
 package br.com.example.demo.usecase;
 
 import br.com.example.demo.domain.product.Product;
-import br.com.example.demo.domain.product.exception.ProductNotFounException;
+import br.com.example.demo.domain.product.exception.ProductNotFoundException;
 import br.com.example.demo.usecase.port.ProductGateway;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class FindProductByIdUsecase {
         return gateway.findProductById(id)
             .orElseThrow(() -> {
                 log.error("product not found with id {}", id);
-                return new ProductNotFounException("id", id);
+                return new ProductNotFoundException("id", id);
             });
     }
 

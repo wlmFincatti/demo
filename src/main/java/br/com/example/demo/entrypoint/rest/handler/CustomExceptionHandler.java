@@ -1,7 +1,7 @@
 package br.com.example.demo.entrypoint.rest.handler;
 
 import br.com.example.demo.domain.product.exception.ProductNameExistsException;
-import br.com.example.demo.domain.product.exception.ProductNotFounException;
+import br.com.example.demo.domain.product.exception.ProductNotFoundException;
 import br.com.example.demo.entrypoint.rest.dto.ErrorResponse;
 import br.com.example.demo.entrypoint.rest.dto.ErrorWrapperResponse;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class CustomExceptionHandler {
     public static final String FIELDS_INVALIDS = "Fields invalids";
     public static final String PRODUCT_NOT_FOUND = "Product Not found";
 
-    @ExceptionHandler(ProductNotFounException.class)
-    public ResponseEntity<ErrorResponse> handleProductNotFound(ProductNotFounException ex) {
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFound(ProductNotFoundException ex) {
         ErrorResponse error = ErrorResponse
             .builder()
             .title(PRODUCT_NOT_FOUND)

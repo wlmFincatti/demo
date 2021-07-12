@@ -1,6 +1,6 @@
 package br.com.example.demo.entrypoint.rest;
 
-import br.com.example.demo.adapter.Productdapter;
+import br.com.example.demo.adapter.ProductAdapter;
 import br.com.example.demo.domain.product.Product;
 import br.com.example.demo.entrypoint.rest.dto.ErrorResponse;
 import br.com.example.demo.entrypoint.rest.dto.ErrorWrapperResponse;
@@ -56,7 +56,7 @@ public class ProductController {
         @Parameter(hidden = true) @PageableDefault(sort = "name", direction = Sort.Direction.DESC) Pageable pageable) {
 
         return ResponseEntity
-            .ok(Productdapter.convertToPageResponse(findAllProductUsecase.execute(
+            .ok(ProductAdapter.convertToPageResponse(findAllProductUsecase.execute(
                 pageable.getPageNumber(),
                 pageable.getPageSize(),
                 pageable.getSort())));
@@ -78,7 +78,7 @@ public class ProductController {
     @GetMapping(path = ProductRoutes.BY_ID)
     public ResponseEntity<ProductDTO> getProductById(@PathVariable String id) {
         return ResponseEntity
-            .ok(Productdapter.convertToResponse(findProductByIdUsecase.execute(id)));
+            .ok(ProductAdapter.convertToResponse(findProductByIdUsecase.execute(id)));
     }
 
 
@@ -102,7 +102,7 @@ public class ProductController {
     public ResponseEntity<ProductDTO> createProductById(@Valid @RequestBody ProductDTO productDto,
                                                         HttpServletResponse response) {
 
-        final Product newProduct = createProductUsecase.execute(Productdapter.convertToDomain(productDto));
+        final Product newProduct = createProductUsecase.execute(ProductAdapter.convertToDomain(productDto));
         URI uri = UriComponentsBuilder
             .fromPath(ProductRoutes.BASE_PATH_PRODUCT.concat(ProductRoutes.BY_ID))
             .buildAndExpand(newProduct.getId())
@@ -110,7 +110,7 @@ public class ProductController {
 
         return ResponseEntity
             .created(uri)
-            .body(Productdapter.convertToResponse(newProduct));
+            .body(ProductAdapter.convertToResponse(newProduct));
     }
 
     @Operation(
@@ -155,7 +155,7 @@ public class ProductController {
     public ResponseEntity<ProductDTO> updateProduct(@PathVariable String id,
                                                     @Valid @RequestBody ProductDTO productDTO) {
         return ResponseEntity
-            .ok(Productdapter.convertToResponse(updateProductUsecase.execute(id, Productdapter.convertToDomain(productDTO))));
+            .ok(ProductAdapter.convertToResponse(updateProductUsecase.execute(id, ProductAdapter.convertToDomain(productDTO))));
     }
 
 }
