@@ -6,9 +6,7 @@ import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Map;
-
-@FeignClient(name = "tmdb client", url = "${tmdb.base.url}")
+@FeignClient(name = "tmdbClient", url = "${tmdb.base.url}")
 public interface TMDBClient {
 
     @GetMapping(value = "/movie/popular", consumes = MediaType.APPLICATION_ATOM_XML_VALUE)

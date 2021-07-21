@@ -23,5 +23,5 @@ public interface MovieController {
             @ApiResponse(responseCode = "500", description = "Internal server error")
         })
     @GetMapping
-    List<MovieDto> getPopularMovies(@RequestParam Integer page);
+    List<MovieDto> getPopularMovies(@RequestParam(required = false, defaultValue = "1") Integer page);
 }

@@ -15,8 +15,8 @@ import java.util.List;
 public class TMDBGatewayImpl implements TMDBGateway {
 
     private final TMDBClient tmdbClient;
-    @Value("${tmdb.api_key}")
-    private final String apiKey;
+    @Value("${tmdb.api.key}")
+    private String apiKey;
 
     @Override
     public List<MovieResponse> getPopularMovies() {
