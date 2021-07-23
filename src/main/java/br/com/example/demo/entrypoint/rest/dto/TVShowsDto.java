@@ -1,17 +1,22 @@
 package br.com.example.demo.entrypoint.rest.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @Builder
-public class MovieDto {
+@AllArgsConstructor
+@NoArgsConstructor
+public class TVShowsDto {
     private Long id;
     private String overview;
     private String popularity;
-    private LocalDate releaseDate;
     private Double voteAverage;
-    private String title;
+    private LocalDate firstAirDate;
+    private String name;
+    private String originalName;
 }

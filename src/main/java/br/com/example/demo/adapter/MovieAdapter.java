@@ -2,6 +2,7 @@ package br.com.example.demo.adapter;
 
 import br.com.example.demo.domain.Movie;
 import br.com.example.demo.entrypoint.rest.dto.MovieDto;
+import br.com.example.demo.external.gateway.dto.Content;
 import br.com.example.demo.external.gateway.dto.MovieResponse;
 import lombok.experimental.UtilityClass;
 import org.springframework.beans.BeanUtils;

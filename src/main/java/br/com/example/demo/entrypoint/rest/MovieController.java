@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface MovieController {
     @Operation(summary = "Get popular movies",
-        description = "Endpoint to retrieve all movies in a page",
+        description = "Endpoint to retrieve all popular movies in a page",
         parameters = {
             @Parameter(name = "page",
                 description = "the number of the page to read the movies from",
@@ -22,6 +22,20 @@ public interface MovieController {
             @ApiResponse(responseCode = "200", description = "Movies were retrieved successfully"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
         })
-    @GetMapping
+    @GetMapping(path = "/popular")
     List<MovieDto> getPopularMovies(@RequestParam(required = false, defaultValue = "1") Integer page);
+
+    @Operation(summary = "Get top rated movies",
+        description = "Endpoint to retrieve all top rated movies in a page",
+        parameters = {
+            @Parameter(name = "page",
+                description = "the number of the page to read the movies from",
+                in = ParameterIn.QUERY)
+        },
+        responses = {
+            @ApiResponse(responseCode = "200", description = "Movies were retrieved successfully"),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+        })
+    @GetMapping(path = "/top_rated")
+    List<MovieDto> getTopRatedMovies(@RequestParam(required = false, defaultValue = "1") Integer page);
 }

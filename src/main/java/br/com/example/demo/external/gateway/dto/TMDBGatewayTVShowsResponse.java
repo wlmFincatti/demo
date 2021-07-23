@@ -11,6 +11,6 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-public class TMDBGatewayMoviesResponse extends TMDBGatewayContentResponse {
-    private List<MovieResponse> results;
+public class TMDBGatewayTVShowsResponse extends TMDBGatewayContentResponse {
+    List<TVShowsResponse> results;
 }

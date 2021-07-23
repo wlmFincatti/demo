@@ -8,18 +8,19 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public class MovieResponse extends Content {
-    private Boolean adult;
-    @JsonProperty("original_title")
-    private String originalTitle;
-    @JsonProperty("release_date")
-    private LocalDate releaseDate;
-    private String title;
-    private Boolean video;
+public class TVShowsResponse extends Content {
+    @JsonProperty("first_air_date")
+    private LocalDate firstAirDate;
+    private String name;
+    @JsonProperty("origin_country")
+    private List<String> originCountry;
+    @JsonProperty("original_name")
+    private String originalName;
 }
