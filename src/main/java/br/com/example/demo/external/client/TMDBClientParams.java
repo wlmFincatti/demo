@@ -10,4 +10,5 @@ import lombok.Data;
 public class TMDBClientParams {
     private String api_key;
     private Integer page;
+    private String language;
 }

@@ -1,5 +1,6 @@
 package br.com.example.demo.external.gateway;
 
+import br.com.example.demo.external.gateway.dto.MovieDetailsResponse;
 import br.com.example.demo.external.gateway.dto.MovieResponse;
 import br.com.example.demo.external.gateway.dto.TVShowsResponse;
 
@@ -10,4 +11,5 @@ public interface TMDBGateway {
     List<MovieResponse> getTopRatedMovies(Integer page);
     List<TVShowsResponse> getPopularTVShows(Integer page);
     List<TVShowsResponse> getTopRatedTVShows(Integer page);
+    MovieDetailsResponse getMovieDetails(Long id);
 }

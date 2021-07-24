@@ -3,6 +3,7 @@ package br.com.example.demo.external.gateway.impl;
 import br.com.example.demo.external.client.TMDBClient;
 import br.com.example.demo.external.client.TMDBClientParams;
 import br.com.example.demo.external.gateway.TMDBGateway;
+import br.com.example.demo.external.gateway.dto.MovieDetailsResponse;
 import br.com.example.demo.external.gateway.dto.MovieResponse;
 import br.com.example.demo.external.gateway.dto.TVShowsResponse;
 import lombok.RequiredArgsConstructor;
@@ -21,21 +22,31 @@ public class TMDBGatewayImpl implements TMDBGateway {
 
     @Override
     public List<MovieResponse> getPopularMovies(Integer page) {
-        return tmdbClient.getPopularMovies(new TMDBClientParams(apiKey, page)).getResults();
+        return tmdbClient.getPopularMovies(TMDBClientParams.builder()
+            .api_key(apiKey).page(page).build()).getResults();
     }
 
     @Override
     public List<MovieResponse> getTopRatedMovies(Integer page) {
-        return tmdbClient.getTopRatedMovies(new TMDBClientParams(apiKey, page)).getResults();
+        return tmdbClient.getTopRatedMovies(TMDBClientParams.builder()
+            .api_key(apiKey).page(page).build()).getResults();
     }
 
     @Override
     public List<TVShowsResponse> getPopularTVShows(Integer page) {
-        return tmdbClient.getPopularTVShows(new TMDBClientParams(apiKey, page)).getResults();
+        return tmdbClient.getPopularTVShows(TMDBClientParams.builder()
+            .api_key(apiKey).page(page).build()).getResults();
     }
 
     @Override
     public List<TVShowsResponse> getTopRatedTVShows(Integer page) {
-        return tmdbClient.getTopRatedTVShows(new TMDBClientParams(apiKey, page)).getResults();
+        return tmdbClient.getTopRatedTVShows(TMDBClientParams.builder()
+            .api_key(apiKey).page(page).build()).getResults();
+    }
+
+    @Override
+    public MovieDetailsResponse getMovieDetails(Long id) {
+        return tmdbClient.getMovieDetails(id, TMDBClientParams.builder()
+            .api_key(apiKey).build());
     }
 }

@@ -2,6 +2,7 @@ package br.com.example.demo.adapter;
 
 import br.com.example.demo.domain.TVShows;
 import br.com.example.demo.entrypoint.rest.dto.TVShowsDto;
+import br.com.example.demo.external.gateway.dto.TVShowsResponse;
 import lombok.experimental.UtilityClass;
 import org.springframework.beans.BeanUtils;
 
