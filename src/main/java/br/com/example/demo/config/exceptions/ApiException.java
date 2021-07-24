@@ -9,7 +9,7 @@ public class ApiException extends RuntimeException {
     private String title;
     private HttpStatus httpStatus;
 
-    public ApiException(String message, String title, HttpStatus httpStatus) {
+    protected ApiException(String message, String title, HttpStatus httpStatus) {
         super(message);
         this.title = title;
         this.httpStatus = httpStatus;

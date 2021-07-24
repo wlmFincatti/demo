@@ -5,6 +5,7 @@ import br.com.example.demo.external.client.TMDBClientParams;
 import br.com.example.demo.external.gateway.TMDBGateway;
 import br.com.example.demo.external.gateway.dto.MovieDetailsResponse;
 import br.com.example.demo.external.gateway.dto.MovieResponse;
+import br.com.example.demo.external.gateway.dto.TVShowsDetails;
 import br.com.example.demo.external.gateway.dto.TVShowsResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -47,6 +48,12 @@ public class TMDBGatewayImpl implements TMDBGateway {
     @Override
     public MovieDetailsResponse getMovieDetails(Long id) {
         return tmdbClient.getMovieDetails(id, TMDBClientParams.builder()
+            .api_key(apiKey).build());
+    }
+
+    @Override
+    public TVShowsDetails getTVShowsDetails(Long id) {
+        return tmdbClient.getTVShowsDetails(id, TMDBClientParams.builder()
             .api_key(apiKey).build());
     }
 }

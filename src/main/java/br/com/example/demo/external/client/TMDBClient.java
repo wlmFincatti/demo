@@ -3,6 +3,7 @@ package br.com.example.demo.external.client;
 import br.com.example.demo.external.gateway.dto.MovieDetailsResponse;
 import br.com.example.demo.external.gateway.dto.TMDBGatewayMoviesResponse;
 import br.com.example.demo.external.gateway.dto.TMDBGatewayTVShowsResponse;
+import br.com.example.demo.external.gateway.dto.TVShowsDetails;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.http.MediaType;
@@ -26,4 +27,7 @@ public interface TMDBClient {
 
     @GetMapping(value = "/movie/{id}")
     MovieDetailsResponse getMovieDetails(@PathVariable Long id, @SpringQueryMap TMDBClientParams params);
+
+    @GetMapping(value = "/tv/{id}")
+    TVShowsDetails getTVShowsDetails(@PathVariable Long id, @SpringQueryMap TMDBClientParams params);
 }

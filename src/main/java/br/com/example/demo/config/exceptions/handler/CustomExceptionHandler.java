@@ -1,7 +1,6 @@
-package br.com.example.demo.entrypoint.rest.handler;
+package br.com.example.demo.config.exceptions.handler;
 
 import br.com.example.demo.config.exceptions.ApiException;
-import br.com.example.demo.config.exceptions.MovieNotFoundException;
 import br.com.example.demo.entrypoint.rest.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class CustomExceptionHandler {
             .detail(ex.getMessage())
             .status(HttpStatus.NOT_FOUND)
             .build();
-        return ResponseEntity.status(404).body(error);
+        return ResponseEntity.status(ex.getHttpStatus()).body(error);
     }
 
 }

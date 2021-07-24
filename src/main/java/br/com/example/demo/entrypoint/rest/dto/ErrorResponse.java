@@ -1,6 +1,5 @@
 package br.com.example.demo.entrypoint.rest.dto;
 
-import br.com.example.demo.entrypoint.rest.handler.CustomExceptionHandler;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import org.springframework.http.HttpStatus;

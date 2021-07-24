@@ -1,27 +1,27 @@
 package br.com.example.demo.usecase.impl;
 
-import br.com.example.demo.adapter.MovieAdapter;
+import br.com.example.demo.adapter.TVShowsAdapter;
 import br.com.example.demo.config.exceptions.ApiException;
-import br.com.example.demo.config.exceptions.MovieNotFoundException;
-import br.com.example.demo.entrypoint.rest.dto.MovieDetailsDto;
+import br.com.example.demo.config.exceptions.TVShowNotFoundException;
+import br.com.example.demo.entrypoint.rest.dto.TVShowsDetailsDto;
 import br.com.example.demo.external.gateway.TMDBGateway;
-import br.com.example.demo.usecase.GetMovieDetails;
+import br.com.example.demo.usecase.GetTVShowsDetails;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class GetMovieDetailsImpl implements GetMovieDetails {
+public class GetTVShowsDetailsImpl implements GetTVShowsDetails {
     private final TMDBGateway tmdbGateway;
 
     @Override
-    public MovieDetailsDto execute(Long id) {
+    public TVShowsDetailsDto execute(Long id) {
         try {
-            return MovieAdapter.convertToDetailsDto(tmdbGateway.getMovieDetails(id));
+            return TVShowsAdapter.convertToDetailsDto(tmdbGateway.getTVShowsDetails(id));
         } catch (FeignException e) {
             if (e.status() == 404) {
-                throw new MovieNotFoundException();
+                throw new TVShowNotFoundException();
             }
             throw new ApiException(e);
         }
