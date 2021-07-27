@@ -17,7 +17,6 @@ public class GetPopularMoviesImpl implements GetPopularMovies {
 
     @Override
     public List<Movie> execute(Integer page) {
-        final var _page = page == null ? 1 : page;
-        return MovieAdapter.convertToDomain(tmdbGateway.getPopularMovies(_page));
+        return MovieAdapter.convertToDomain(tmdbGateway.getPopularMovies(page));
     }
 }

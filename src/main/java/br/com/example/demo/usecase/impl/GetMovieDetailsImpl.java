@@ -19,10 +19,9 @@ public class GetMovieDetailsImpl implements GetMovieDetails {
     public MovieDetailsDto execute(Long id) {
         try {
             return MovieAdapter.convertToDetailsDto(tmdbGateway.getMovieDetails(id));
+        } catch (FeignException.NotFound e) {
+            throw new MovieNotFoundException();
         } catch (FeignException e) {
-            if (e.status() == 404) {
-                throw new MovieNotFoundException();
-            }
             throw new ApiException(e);
         }
     }

@@ -19,10 +19,9 @@ public class GetTVShowsDetailsImpl implements GetTVShowsDetails {
     public TVShowsDetailsDto execute(Long id) {
         try {
             return TVShowsAdapter.convertToDetailsDto(tmdbGateway.getTVShowsDetails(id));
+        } catch (FeignException.NotFound e) {
+            throw new TVShowNotFoundException();
         } catch (FeignException e) {
-            if (e.status() == 404) {
-                throw new TVShowNotFoundException();
-            }
             throw new ApiException(e);
         }
     }
