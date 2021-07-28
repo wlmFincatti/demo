@@ -8,6 +8,7 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.io.IOException;
 import java.net.URL;
 
+// TODO: falar com o will
 public class FixtureUtils {
     private static final String FORMAT_JSON_FIXTURE_PATH = "file:src/test/resources/%s";
     public static <T> T parseObject(String file, Class<T> clazz) throws IOException {

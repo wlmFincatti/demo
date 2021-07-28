@@ -13,6 +13,7 @@ import static org.hamcrest.Matchers.*;
 
 //@RunWith(SpringRunner.class)
 //@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// TODO: falar com o will
 class MoviesControllerTest {
 
     private String BASE_URL_PATH = "/demo/v1";
