@@ -15,7 +15,7 @@ public class CustomExceptionHandler {
         ErrorResponse error = ErrorResponse
             .builder()
             .title(ex.getTitle())
-            .detail(ex.getMessage())
+            .details(ex.getMessage())
             .status(HttpStatus.NOT_FOUND)
             .build();
         return ResponseEntity.status(ex.getHttpStatus()).body(error);
