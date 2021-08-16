@@ -7,30 +7,30 @@ spring:
     name: poc-demo
   banner:
     location: classpath:custom-banner.txt
-  data:
-    mongodb:
-      authentication-database: admin
-      host: localhost
-      port: 27017
-      database: demo-app-db
-      username: root
-      password: example
-  cache:
-    caffeine:
-      spec: expireAfterAccess=30s
-    type: redis
-    redis:
-      key-prefix: demo-app-
-      cache-null-values: false
-      time-to-live: 36000
-  redis:
-    host: localhost
-    port: 6379
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+#  data:
+#    mongodb:
+#      authentication-database: admin
+#      host: localhost
+#      port: 27017
+#      database: demo-app-db
+#      username: root
+#      password: example
+#  cache:
+#    caffeine:
+#      spec: expireAfterAccess=30s
+#    type: redis
+#    redis:
+#      key-prefix: demo-app-
+#      cache-null-values: false
+#      time-to-live: 36000
+#  redis:
+#    host: localhost
+#    port: 6379
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
 springdoc:
   show-actuator: true
   api-docs:
