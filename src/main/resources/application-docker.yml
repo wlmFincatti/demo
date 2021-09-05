@@ -15,3 +15,8 @@ management:
     web:
       exposure:
         include: "*"
+tmdb:
+  api:
+    key: ${TMDB_API_KEY}
+  base:
+    url: https://api.themoviedb.org/3
